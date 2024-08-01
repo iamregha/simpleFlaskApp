@@ -1,6 +1,15 @@
 from flask import Flask
-app = Flask(__name__)
+from flask_sqlalchemy import SQLAlchemy
 
+app = Flask(__name__)
+app.debug = True
+
+#create a configuration for using sqlite db
+app.config['SQLAlchemy_DATABASE_URI'] = 'sqlite:///simpleApp.db'
+
+
+#create an Sqlalchemy instance
+db = SQLAlchemy(app)
 
 @app.route('/')
 def check():
